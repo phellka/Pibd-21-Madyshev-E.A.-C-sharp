@@ -12,7 +12,7 @@ namespace WindowsFormsPlane
 {
 	public partial class FormPlane :Form
 	{
-		private PlaneRadar plane;
+		private ITransport plane;
 
 		public FormPlane() {
 			InitializeComponent();
@@ -23,10 +23,17 @@ namespace WindowsFormsPlane
 			plane.DrawTransport(gr);
 			pictureBoxPlane.Image = bmp;
 		}
-		private void buttonCreate_Click(object sender, EventArgs e) {
+		private void buttonCreatePlane_Click(object sender, EventArgs e) {
 			Random rnd = new Random();
-			plane = new PlaneRadar();
-			plane.Init(rnd.Next(1000, 3000), rnd.Next(10000, 20000), Color.BurlyWood,
+			plane = new Plane(rnd.Next(1000, 3000), rnd.Next(10000, 20000), Color.BurlyWood);
+			plane.SetPosition(rnd.Next(0, 100), rnd.Next(0, 100),
+				pictureBoxPlane.Width, pictureBoxPlane.Height);
+			Draw();
+
+		}
+		private void buttonCreatePlaneRadar_Click(object sender, EventArgs e) {
+			Random rnd = new Random();
+			plane = new PlaneRadar(rnd.Next(1000, 3000), rnd.Next(10000, 20000), Color.BurlyWood,
 				Color.Coral, true, true);
 			plane.SetPosition(rnd.Next(0, 100),
 				rnd.Next(0, 100), pictureBoxPlane.Width, pictureBoxPlane.Height);
