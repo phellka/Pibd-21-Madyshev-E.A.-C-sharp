@@ -27,12 +27,10 @@ namespace WindowsFormsPlane
         /// </summary>
         private void InitializeComponent() {
             this.pictureBoxPlane = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlane)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,16 +42,6 @@ namespace WindowsFormsPlane
             this.pictureBoxPlane.Size = new System.Drawing.Size(884, 461);
             this.pictureBoxPlane.TabIndex = 0;
             this.pictureBoxPlane.TabStop = false;
-            // 
-            // buttonCreate
-            // 
-            this.buttonCreate.Location = new System.Drawing.Point(12, 12);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(104, 23);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "создать самолет";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreatePlane_Click);
             // 
             // buttonLeft
             // 
@@ -103,27 +91,15 @@ namespace WindowsFormsPlane
             this.buttonUp.UseVisualStyleBackColor = true;
             this.buttonUp.Click += new System.EventHandler(this.buttonMove_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(122, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "создать самолет с радаром";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonCreatePlaneRadar_Click);
-            // 
             // FormPlane
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxPlane);
             this.Name = "FormPlane";
             this.Text = "FormPlane";
@@ -135,12 +111,10 @@ namespace WindowsFormsPlane
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxPlane;
-        private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonUp;
-        private System.Windows.Forms.Button button1;
     }
 }
 
