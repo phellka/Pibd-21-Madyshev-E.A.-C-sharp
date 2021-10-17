@@ -9,7 +9,8 @@ using System.Windows.Forms;
 namespace WindowsFormsPlane
 {
     class Airfield<T> where T : class, ITransport{
-        private readonly T[] places;
+        private readonly List<T> places;
+        private readonly int maxCount;
         private readonly int pictureWidth;
         private readonly int pictureHeight;
         private readonly int placeSizeWidth = 330;
@@ -19,28 +20,24 @@ namespace WindowsFormsPlane
         public Airfield(int picWidth, int picHeight) {
             airfieldWidth = picWidth / placeSizeWidth;
             airfieldHeight = picHeight / placeSizeHeight;
-            places = new T[airfieldWidth * airfieldHeight];
+            maxCount = airfieldWidth * airfieldHeight;
             pictureWidth = picWidth;
             pictureHeight = picHeight;
+            places = new List<T>();
         }
         public static int operator +(Airfield<T> p, T plane) {
-            int i = 0;
-            while (i < p.places.Length && p.places[i] != null) {
-                i++;
-            }
-            if (i < p.places.Length && p.places[i] == null) {
-                plane.SetPosition(i % p.airfieldWidth * p.placeSizeWidth + 10, i / p.airfieldWidth * p.placeSizeHeight + 5, p.pictureWidth, p.pictureHeight);
-                p.places[i] = plane;
-                return i;
+            if (p.places.Count < p.maxCount) {
+                p.places.Add(plane);
+                return p.places.Count - 1;
             }
             else {
                 return -1;
             }
         }
         public static T operator -(Airfield<T> p, int index) {
-            if (index > -1 && index < p.places.Length && p.places[index] != null) {
+            if (index > -1 && index < p.places.Count) {
                 T bufPlane = p.places[index];
-                p.places[index] = null;
+                p.places.RemoveAt(index);
                 return bufPlane;
             }
             else {
@@ -49,7 +46,8 @@ namespace WindowsFormsPlane
         }
         public void Draw(Graphics gr) {
             DrawMarking(gr);
-            for (int i = 0; i < places.Length; i++) {
+            for (int i = 0; i < places.Count; i++) {
+                places[i].SetPosition(i % airfieldWidth * placeSizeWidth + 10, i / airfieldWidth * placeSizeHeight + 5, pictureWidth, pictureHeight);
                 places[i]?.DrawTransport(gr);
             }
         }
@@ -57,8 +55,7 @@ namespace WindowsFormsPlane
             Pen pen = new Pen(Color.Black, 3);
             for (int i = 0; i < airfieldWidth; i++) {
                 for (int j = 0; j < airfieldHeight + 1; ++j) {
-                    gr.DrawLine(pen, i * placeSizeWidth, j * placeSizeHeight, i *
-                   placeSizeWidth + placeSizeWidth / 2, j * placeSizeHeight);
+                    gr.DrawLine(pen, i * placeSizeWidth, j * placeSizeHeight, i * placeSizeWidth + placeSizeWidth / 2, j * placeSizeHeight);
                 }
                 gr.DrawLine(pen, i * placeSizeWidth, 0, i * placeSizeWidth,
                (airfieldHeight) * placeSizeHeight);
