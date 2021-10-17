@@ -33,6 +33,11 @@ namespace WindowsFormsPlane
             this.buttonDelPlane = new System.Windows.Forms.Button();
             this.maskedTextBoxDelPlane = new System.Windows.Forms.MaskedTextBox();
             this.labelDelPlane = new System.Windows.Forms.Label();
+            this.listBoxAirfields = new System.Windows.Forms.ListBox();
+            this.buttonDelAirfield = new System.Windows.Forms.Button();
+            this.buttonAddAirfield = new System.Windows.Forms.Button();
+            this.textBoxNewAirfield = new System.Windows.Forms.TextBox();
+            this.labelAirfield = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirfield)).BeginInit();
             this.groupBoxDelPlane.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +53,7 @@ namespace WindowsFormsPlane
             // 
             // buttonParkPlane
             // 
-            this.buttonParkPlane.Location = new System.Drawing.Point(687, 12);
+            this.buttonParkPlane.Location = new System.Drawing.Point(687, 268);
             this.buttonParkPlane.Name = "buttonParkPlane";
             this.buttonParkPlane.Size = new System.Drawing.Size(89, 38);
             this.buttonParkPlane.TabIndex = 1;
@@ -58,7 +63,7 @@ namespace WindowsFormsPlane
             // 
             // buttonParkPlaneRadar
             // 
-            this.buttonParkPlaneRadar.Location = new System.Drawing.Point(687, 56);
+            this.buttonParkPlaneRadar.Location = new System.Drawing.Point(687, 312);
             this.buttonParkPlaneRadar.Name = "buttonParkPlaneRadar";
             this.buttonParkPlaneRadar.Size = new System.Drawing.Size(89, 48);
             this.buttonParkPlaneRadar.TabIndex = 2;
@@ -71,7 +76,7 @@ namespace WindowsFormsPlane
             this.groupBoxDelPlane.Controls.Add(this.buttonDelPlane);
             this.groupBoxDelPlane.Controls.Add(this.maskedTextBoxDelPlane);
             this.groupBoxDelPlane.Controls.Add(this.labelDelPlane);
-            this.groupBoxDelPlane.Location = new System.Drawing.Point(678, 110);
+            this.groupBoxDelPlane.Location = new System.Drawing.Point(678, 366);
             this.groupBoxDelPlane.Name = "groupBoxDelPlane";
             this.groupBoxDelPlane.Size = new System.Drawing.Size(110, 83);
             this.groupBoxDelPlane.TabIndex = 3;
@@ -105,11 +110,61 @@ namespace WindowsFormsPlane
             this.labelDelPlane.TabIndex = 0;
             this.labelDelPlane.Text = "Место:";
             // 
+            // listBoxAirfields
+            // 
+            this.listBoxAirfields.FormattingEnabled = true;
+            this.listBoxAirfields.Location = new System.Drawing.Point(676, 80);
+            this.listBoxAirfields.Name = "listBoxAirfields";
+            this.listBoxAirfields.Size = new System.Drawing.Size(121, 95);
+            this.listBoxAirfields.TabIndex = 13;
+            this.listBoxAirfields.SelectedIndexChanged += new System.EventHandler(this.listBoxAirfields_SelectedIndexChanged);
+            // 
+            // buttonDelAirfield
+            // 
+            this.buttonDelAirfield.Location = new System.Drawing.Point(676, 181);
+            this.buttonDelAirfield.Name = "buttonDelAirfield";
+            this.buttonDelAirfield.Size = new System.Drawing.Size(121, 23);
+            this.buttonDelAirfield.TabIndex = 12;
+            this.buttonDelAirfield.Text = "Удалить аэродром";
+            this.buttonDelAirfield.UseVisualStyleBackColor = true;
+            this.buttonDelAirfield.Click += new System.EventHandler(this.buttonDelAirfield_Click);
+            // 
+            // buttonAddAirfield
+            // 
+            this.buttonAddAirfield.Location = new System.Drawing.Point(676, 51);
+            this.buttonAddAirfield.Name = "buttonAddAirfield";
+            this.buttonAddAirfield.Size = new System.Drawing.Size(121, 23);
+            this.buttonAddAirfield.TabIndex = 11;
+            this.buttonAddAirfield.Text = "Добавить аэродром";
+            this.buttonAddAirfield.UseVisualStyleBackColor = true;
+            this.buttonAddAirfield.Click += new System.EventHandler(this.buttonAddAirfield_Click);
+            // 
+            // textBoxNewAirfield
+            // 
+            this.textBoxNewAirfield.Location = new System.Drawing.Point(676, 25);
+            this.textBoxNewAirfield.Name = "textBoxNewAirfield";
+            this.textBoxNewAirfield.Size = new System.Drawing.Size(121, 20);
+            this.textBoxNewAirfield.TabIndex = 10;
+            // 
+            // labelAirfield
+            // 
+            this.labelAirfield.AutoSize = true;
+            this.labelAirfield.Location = new System.Drawing.Point(707, 9);
+            this.labelAirfield.Name = "labelAirfield";
+            this.labelAirfield.Size = new System.Drawing.Size(69, 13);
+            this.labelAirfield.TabIndex = 9;
+            this.labelAirfield.Text = "Аэродромы:";
+            // 
             // FormAirfield
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.listBoxAirfields);
+            this.Controls.Add(this.buttonDelAirfield);
+            this.Controls.Add(this.buttonAddAirfield);
+            this.Controls.Add(this.textBoxNewAirfield);
+            this.Controls.Add(this.labelAirfield);
             this.Controls.Add(this.groupBoxDelPlane);
             this.Controls.Add(this.buttonParkPlaneRadar);
             this.Controls.Add(this.buttonParkPlane);
@@ -120,6 +175,7 @@ namespace WindowsFormsPlane
             this.groupBoxDelPlane.ResumeLayout(false);
             this.groupBoxDelPlane.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -132,5 +188,10 @@ namespace WindowsFormsPlane
         private System.Windows.Forms.Button buttonDelPlane;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxDelPlane;
         private System.Windows.Forms.Label labelDelPlane;
+        private System.Windows.Forms.ListBox listBoxAirfields;
+        private System.Windows.Forms.Button buttonDelAirfield;
+        private System.Windows.Forms.Button buttonAddAirfield;
+        private System.Windows.Forms.TextBox textBoxNewAirfield;
+        private System.Windows.Forms.Label labelAirfield;
     }
 }
