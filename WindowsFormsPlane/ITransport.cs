@@ -12,6 +12,7 @@ namespace WindowsFormsPlane
         void SetPosition(int x, int y, int width, int height);
         void MoveTransport(Direction direction);
         void DrawTransport(Graphics gr);
+        void SetMainColor(Color mainColor);
 
     }
 }

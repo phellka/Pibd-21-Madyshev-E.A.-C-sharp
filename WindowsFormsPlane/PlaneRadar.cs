@@ -35,5 +35,8 @@ namespace WindowsFormsPlane
                 gr.FillPie(dopBrush, startPosX + planeWidth * 3 / 4 - planeHeight / 10, startPosY + planeHeight * 1 / 5, planeHeight / 5, planeHeight / 10, 180, 180);
             }
         }
+        public void SetDopColor(Color dopColor) {
+            this.dopColor = dopColor;
+        }
     }
 }
