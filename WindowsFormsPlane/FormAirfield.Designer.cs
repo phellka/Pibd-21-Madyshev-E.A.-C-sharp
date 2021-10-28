@@ -27,8 +27,7 @@ namespace WindowsFormsPlane
         /// </summary>
         private void InitializeComponent() {
             this.pictureBoxAirfield = new System.Windows.Forms.PictureBox();
-            this.buttonParkPlane = new System.Windows.Forms.Button();
-            this.buttonParkPlaneRadar = new System.Windows.Forms.Button();
+            this.buttonAddPlane = new System.Windows.Forms.Button();
             this.groupBoxDelPlane = new System.Windows.Forms.GroupBox();
             this.buttonDelPlane = new System.Windows.Forms.Button();
             this.maskedTextBoxDelPlane = new System.Windows.Forms.MaskedTextBox();
@@ -51,25 +50,15 @@ namespace WindowsFormsPlane
             this.pictureBoxAirfield.TabIndex = 0;
             this.pictureBoxAirfield.TabStop = false;
             // 
-            // buttonParkPlane
+            // buttonAddPlane
             // 
-            this.buttonParkPlane.Location = new System.Drawing.Point(687, 268);
-            this.buttonParkPlane.Name = "buttonParkPlane";
-            this.buttonParkPlane.Size = new System.Drawing.Size(89, 38);
-            this.buttonParkPlane.TabIndex = 1;
-            this.buttonParkPlane.Text = "Припарковать самолет";
-            this.buttonParkPlane.UseVisualStyleBackColor = true;
-            this.buttonParkPlane.Click += new System.EventHandler(this.buttonSetPlane_Click);
-            // 
-            // buttonParkPlaneRadar
-            // 
-            this.buttonParkPlaneRadar.Location = new System.Drawing.Point(687, 312);
-            this.buttonParkPlaneRadar.Name = "buttonParkPlaneRadar";
-            this.buttonParkPlaneRadar.Size = new System.Drawing.Size(89, 48);
-            this.buttonParkPlaneRadar.TabIndex = 2;
-            this.buttonParkPlaneRadar.Text = "Припарковать самолет с радаром";
-            this.buttonParkPlaneRadar.UseVisualStyleBackColor = true;
-            this.buttonParkPlaneRadar.Click += new System.EventHandler(this.buttonSetPlaneRadar_Click);
+            this.buttonAddPlane.Location = new System.Drawing.Point(676, 248);
+            this.buttonAddPlane.Name = "buttonAddPlane";
+            this.buttonAddPlane.Size = new System.Drawing.Size(121, 38);
+            this.buttonAddPlane.TabIndex = 1;
+            this.buttonAddPlane.Text = "Припарковать самолет";
+            this.buttonAddPlane.UseVisualStyleBackColor = true;
+            this.buttonAddPlane.Click += new System.EventHandler(this.buttonAddPlane_Click);
             // 
             // groupBoxDelPlane
             // 
@@ -166,8 +155,7 @@ namespace WindowsFormsPlane
             this.Controls.Add(this.textBoxNewAirfield);
             this.Controls.Add(this.labelAirfield);
             this.Controls.Add(this.groupBoxDelPlane);
-            this.Controls.Add(this.buttonParkPlaneRadar);
-            this.Controls.Add(this.buttonParkPlane);
+            this.Controls.Add(this.buttonAddPlane);
             this.Controls.Add(this.pictureBoxAirfield);
             this.Name = "FormAirfield";
             this.Text = "Аэродром";
@@ -182,8 +170,7 @@ namespace WindowsFormsPlane
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxAirfield;
-        private System.Windows.Forms.Button buttonParkPlane;
-        private System.Windows.Forms.Button buttonParkPlaneRadar;
+        private System.Windows.Forms.Button buttonAddPlane;
         private System.Windows.Forms.GroupBox groupBoxDelPlane;
         private System.Windows.Forms.Button buttonDelPlane;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxDelPlane;

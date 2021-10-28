@@ -24,5 +24,8 @@ namespace WindowsFormsPlane
         }
         public abstract void MoveTransport(Direction direction);
         public abstract void DrawTransport(Graphics gr);
+        public void SetMainColor(Color mainColor) {
+            this.mainColor = mainColor;
+        }
     }
 }
