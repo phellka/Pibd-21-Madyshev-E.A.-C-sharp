@@ -18,6 +18,17 @@ namespace WindowsFormsPlane
             this.hvEngine = hvEngine;
             this.hvRadar = hvRadar;
         }
+        public PlaneRadar(string info) : base(info) {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 6) {
+                maxSpeed = Convert.ToInt32(strs[0]);
+                weight = Convert.ToInt32(strs[1]);
+                mainColor = Color.FromName(strs[2]);
+                dopColor = Color.FromName(strs[3]);
+                hvRadar = Convert.ToBoolean(strs[4]);
+                hvEngine = Convert.ToBoolean(strs[5]);
+            }
+        }
         public override void DrawTransport(Graphics gr) {
             Pen pen = new Pen(Color.Black);
             Brush dopBrush = new SolidBrush(dopColor);
@@ -37,6 +48,9 @@ namespace WindowsFormsPlane
         }
         public void SetDopColor(Color dopColor) {
             this.dopColor = dopColor;
+        }
+        public override string ToString() {
+            return $"{maxSpeed}{separator}{weight}{separator}{mainColor.Name}{separator}{dopColor.Name}{separator}{hvRadar}{separator}{hvEngine}";
         }
     }
 }

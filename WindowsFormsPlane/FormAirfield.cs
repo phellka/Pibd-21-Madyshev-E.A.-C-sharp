@@ -89,5 +89,33 @@ namespace WindowsFormsPlane
                 }
             }
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK) {
+                if (airfieldCollection.saveData(saveFileDialog.FileName)) {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (openFileDialog.ShowDialog() == DialogResult.OK) {
+                if (airfieldCollection.loadData(openFileDialog.FileName)) {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    ReloadAirfields();
+                    Draw();
+                }
+                else {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

@@ -61,5 +61,15 @@ namespace WindowsFormsPlane
                (airfieldHeight) * placeSizeHeight);
             }
         }
+        public T this[int index]{
+            get{
+                if (index > -1 && index < places.Count) {
+                    return places[index];
+                }
+                else {
+                    return null;
+                }
+            }
+        }
     }
 }
