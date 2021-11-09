@@ -11,10 +11,19 @@ namespace WindowsFormsPlane
     {
         protected int planeWidth = 170;
         protected int planeHeight = 80;
+        protected readonly char separator = ';';
         public Plane(int maxSpeed, float weight, Color mainColor) {
             base.maxSpeed = maxSpeed;
             base.weight = weight;
             base.mainColor = mainColor;
+        }
+        public Plane(string info) {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3) {
+                maxSpeed = Convert.ToInt32(strs[0]);
+                weight = Convert.ToInt32(strs[1]);
+                mainColor = Color.FromName(strs[2]);
+            }
         }
         protected Plane(int maxSpeed, float weight, Color mainColor, int planeWidth, int planeHeight) {
             base.maxSpeed = maxSpeed;
@@ -73,6 +82,9 @@ namespace WindowsFormsPlane
             gr.DrawEllipse(pen, startPosX + planeWidth / 4, startPosY + planeHeight * 9 / 10, planeHeight / 10, planeHeight / 10);
             gr.DrawLine(pen, startPosX + planeWidth * 3 / 4, startPosY + planeHeight * 4 / 5, startPosX + planeWidth * 3 / 4, startPosY + planeHeight * 9 / 10);
             gr.DrawEllipse(pen, startPosX + planeWidth * 3 / 4 - planeHeight / 20, startPosY + planeHeight * 9 / 10, planeHeight / 10, planeHeight / 10);
+        }
+        public override string ToString() {
+            return $"{maxSpeed}{separator}{weight}{separator}{mainColor.Name}";
         }
     }
 }

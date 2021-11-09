@@ -37,16 +37,23 @@ namespace WindowsFormsPlane
             this.buttonAddAirfield = new System.Windows.Forms.Button();
             this.textBoxNewAirfield = new System.Windows.Forms.TextBox();
             this.labelAirfield = new System.Windows.Forms.Label();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirfield)).BeginInit();
             this.groupBoxDelPlane.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxAirfield
             // 
             this.pictureBoxAirfield.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxAirfield.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxAirfield.Location = new System.Drawing.Point(0, 24);
             this.pictureBoxAirfield.Name = "pictureBoxAirfield";
-            this.pictureBoxAirfield.Size = new System.Drawing.Size(672, 461);
+            this.pictureBoxAirfield.Size = new System.Drawing.Size(672, 437);
             this.pictureBoxAirfield.TabIndex = 0;
             this.pictureBoxAirfield.TabStop = false;
             // 
@@ -144,6 +151,48 @@ namespace WindowsFormsPlane
             this.labelAirfield.TabIndex = 9;
             this.labelAirfield.Text = "Аэродромы:";
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip.TabIndex = 14;
+            this.menuStrip.Text = "menuStrip";
+            // 
+            // FileToolStripMenuItem
+            // 
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.loadToolStripMenuItem});
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.FileToolStripMenuItem.Text = "Файл";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Сохранить";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Загрузить";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormAirfield
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,11 +206,15 @@ namespace WindowsFormsPlane
             this.Controls.Add(this.groupBoxDelPlane);
             this.Controls.Add(this.buttonAddPlane);
             this.Controls.Add(this.pictureBoxAirfield);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormAirfield";
             this.Text = "Аэродром";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirfield)).EndInit();
             this.groupBoxDelPlane.ResumeLayout(false);
             this.groupBoxDelPlane.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,5 +233,11 @@ namespace WindowsFormsPlane
         private System.Windows.Forms.Button buttonAddAirfield;
         private System.Windows.Forms.TextBox textBoxNewAirfield;
         private System.Windows.Forms.Label labelAirfield;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
