@@ -32,8 +32,8 @@ namespace WindowsFormsPlane
             }
             else
                 if (listBoxAirfields.Items.Count > 0 && index > -1 && index < listBoxAirfields.Items.Count) {
-                listBoxAirfields.SelectedIndex = index;
-            }
+                    listBoxAirfields.SelectedIndex = index;
+                }
         }
         private void Draw() {
             Bitmap bmp = new Bitmap(pictureBoxAirfield.Width, pictureBoxAirfield.Height); //для правильной отрисовки при удалении единственного аэродрома перенесено
@@ -52,7 +52,7 @@ namespace WindowsFormsPlane
             airfieldCollection.AddAirfield(textBoxNewAirfield.Text);
             ReloadAirfields();
         }
-        private void buttonDelAirfield_Click(object sender, EventArgs e) { //в вопросе об удалении стоял выбранный а удалялся по названию????
+        private void buttonDelAirfield_Click(object sender, EventArgs e) {
             if (listBoxAirfields.SelectedIndex > -1) {
                 if (MessageBox.Show($"Удалить аэродром { listBoxAirfields.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question) == DialogResult.Yes) {
@@ -105,7 +105,7 @@ namespace WindowsFormsPlane
                     }
                     else {
                         MessageBox.Show("Самолет не удалось поставить");
-                    }
+                    }   
                 }
                 catch (AirfieldOverflowException ex) {
                     logger.Warn(ex);

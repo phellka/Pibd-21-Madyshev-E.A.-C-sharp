@@ -55,7 +55,6 @@ namespace WindowsFormsPlane
                                 sw.Write($"PlaneRadar{separator}");
                             }
                             sw.Write(plane + Environment.NewLine);
-                            //??writeToFile(plane.GetType().Name + separator + plane + Enviroment.NewLine, fs);
                         }
                     }
                 }
@@ -71,16 +70,14 @@ namespace WindowsFormsPlane
                     airfieldStages.Clear();
                 }
                 else {
-                    //throw new Exception("Неверный формат файла");
                     throw new FormatException("Неверный формат файла");
                 }
                 Vehicle plane = null;
                 string key = string.Empty;
                 while ((line = sr.ReadLine()) != null) {
                     if (line.Contains("Airfield")) {
-                        key = line.Split(separator)[1];
+                        key = line.Substring(line.IndexOf(separator) + 1);
                         airfieldStages.Add(key, new Airfield<Vehicle>(pictureWidth, pictureHeight));
-                        //?? AddAirfield(key);
                         continue;
                     }
                     if (string.IsNullOrEmpty(line)) {
@@ -96,9 +93,7 @@ namespace WindowsFormsPlane
                     }
                     var result = airfieldStages[key] + plane;
                     if (result == -1) {
-                        //throw new Exception("Не удалось загрузить самолет на аэродром");
                         throw new AirfieldOverflowException();
-                    }//если в файле больше объектов чем мест, ошибка придет уже со сложения, сюда не попадет
                 }
             }
         }

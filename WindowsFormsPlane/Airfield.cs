@@ -8,11 +8,10 @@ using System.Windows.Forms;
 
 namespace WindowsFormsPlane
 {
-    class Airfield<T> where T : class, ITransport
-    {
+    class Airfield<T> where T : class, ITransport{
         private readonly List<T> places;
-        private readonly int pictureWidth;
         private readonly int maxCount;
+        private readonly int pictureWidth;
         private readonly int pictureHeight;
         private readonly int placeSizeWidth = 330;
         private readonly int placeSizeHeight = 90;
@@ -52,17 +51,14 @@ namespace WindowsFormsPlane
             Pen pen = new Pen(Color.Black, 3);
             for (int i = 0; i < airfieldWidth; i++) {
                 for (int j = 0; j < airfieldHeight + 1; ++j) {
-                    gr.DrawLine(pen, i * placeSizeWidth, j * placeSizeHeight, i *
-                   placeSizeWidth + placeSizeWidth / 2, j * placeSizeHeight);
+                    gr.DrawLine(pen, i * placeSizeWidth, j * placeSizeHeight, i * placeSizeWidth + placeSizeWidth / 2, j * placeSizeHeight);
                 }
                 gr.DrawLine(pen, i * placeSizeWidth, 0, i * placeSizeWidth,
                (airfieldHeight) * placeSizeHeight);
             }
         }
-        public T this[int index]
-        {
-            get
-            {
+        public T this[int index]{
+            get{
                 if (index > -1 && index < places.Count) {
                     return places[index];
                 }
