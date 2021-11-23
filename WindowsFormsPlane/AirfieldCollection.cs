@@ -37,7 +37,7 @@ namespace WindowsFormsPlane
                 else return null;
             }
         }
-        public bool saveData(string fileName) {
+        public void saveData(string fileName) {
             if (File.Exists(fileName)) {
                 File.Delete(fileName);
             }
@@ -55,15 +55,15 @@ namespace WindowsFormsPlane
                                 sw.Write($"PlaneRadar{separator}");
                             }
                             sw.Write(plane + Environment.NewLine);
+                            //??writeToFile(plane.GetType().Name + separator + plane + Enviroment.NewLine, fs);
                         }
                     }
                 }
             }
-            return true;
         }
-        public bool loadData(string fileName) {
+        public void loadData(string fileName) {
             if (!File.Exists(fileName)) {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(fileName)) {
                 string line = sr.ReadLine();
@@ -71,14 +71,16 @@ namespace WindowsFormsPlane
                     airfieldStages.Clear();
                 }
                 else {
-                    return false;
+                    //throw new Exception("Неверный формат файла");
+                    throw new FormatException("Неверный формат файла");
                 }
                 Vehicle plane = null;
                 string key = string.Empty;
                 while ((line = sr.ReadLine()) != null) {
                     if (line.Contains("Airfield")) {
-                        key = line.Substring(line.IndexOf(separator) + 1);
+                        key = line.Split(separator)[1];
                         airfieldStages.Add(key, new Airfield<Vehicle>(pictureWidth, pictureHeight));
+                        //?? AddAirfield(key);
                         continue;
                     }
                     if (string.IsNullOrEmpty(line)) {
@@ -92,16 +94,13 @@ namespace WindowsFormsPlane
                             plane = new PlaneRadar(line.Split(separator)[1]);
                         }
                     }
-                    if (!airfieldStages.ContainsKey(key)) {
-                        return false;
-                    }
                     var result = airfieldStages[key] + plane;
                     if (result == -1) {
-                        return false;
-                    }
+                        //throw new Exception("Не удалось загрузить самолет на аэродром");
+                        throw new AirfieldOverflowException();
+                    }//если в файле больше объектов чем мест, ошибка придет уже со сложения, сюда не попадет
                 }
             }
-            return true;
         }
     }
 }
