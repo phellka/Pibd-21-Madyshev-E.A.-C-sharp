@@ -63,13 +63,6 @@ namespace WindowsFormsPlane
                 Draw();                                                             //для удаления единственного
             }
         }
-        private void buttonAddPlane_Click(object sender, EventArgs e) {
-            if (listBoxAirfields.SelectedIndex > -1) {
-                var formPlaneConfig = new FormPlaneConfig();
-                formPlaneConfig.addEvent(addPlane);
-                formPlaneConfig.Show();
-            }
-        }
         private void buttonTakePlane_Click(object sender, EventArgs e) {
             if (listBoxAirfields.SelectedIndex > -1 && maskedTextBoxDelPlane.Text != "") {
                 try {
@@ -90,6 +83,13 @@ namespace WindowsFormsPlane
                     logger.Warn(ex);
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+        private void buttonAddPlane_Click(object sender, EventArgs e) {
+            if (listBoxAirfields.SelectedIndex > -1) {
+                var formPlaneConfig = new FormPlaneConfig();
+                formPlaneConfig.addEvent(addPlane);
+                formPlaneConfig.Show();
             }
         }
         private void listBoxAirfields_SelectedIndexChanged(object sender, EventArgs e) {
