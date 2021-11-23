@@ -26,23 +26,19 @@ namespace WindowsFormsPlane
             places = new List<T>();
         }
         public static int operator +(Airfield<T> p, T plane) {
-            if (p.places.Count < p.maxCount) {
-                p.places.Add(plane);
-                return p.places.Count - 1;
+            if (p.places.Count >= p.maxCount) {
+                throw new AirfieldOverflowException();
             }
-            else {
-                return -1;
-            }
+            p.places.Add(plane);
+            return p.places.Count - 1;
         }
         public static T operator -(Airfield<T> p, int index) {
-            if (index > -1 && index < p.places.Count) {
-                T bufPlane = p.places[index];
-                p.places.RemoveAt(index);
-                return bufPlane;
+            if (index <= -1 || index >= p.places.Count) {
+                throw new AirfieldVehicleNotFoundException(index);
             }
-            else {
-                return null;
-            }
+            T bufPlane = p.places[index];
+            p.places.RemoveAt(index);
+            return bufPlane;
         }
         public void Draw(Graphics gr) {
             DrawMarking(gr);

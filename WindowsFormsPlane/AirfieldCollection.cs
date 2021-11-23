@@ -37,7 +37,7 @@ namespace WindowsFormsPlane
                 else return null;
             }
         }
-        public bool saveData(string fileName) {
+        public void saveData(string fileName) {
             if (File.Exists(fileName)) {
                 File.Delete(fileName);
             }
@@ -59,11 +59,10 @@ namespace WindowsFormsPlane
                     }
                 }
             }
-            return true;
         }
-        public bool loadData(string fileName) {
+        public void loadData(string fileName) {
             if (!File.Exists(fileName)) {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(fileName)) {
                 string line = sr.ReadLine();
@@ -71,7 +70,7 @@ namespace WindowsFormsPlane
                     airfieldStages.Clear();
                 }
                 else {
-                    return false;
+                    throw new FormatException("Неверный формат файла");
                 }
                 Vehicle plane = null;
                 string key = string.Empty;
@@ -92,16 +91,11 @@ namespace WindowsFormsPlane
                             plane = new PlaneRadar(line.Split(separator)[1]);
                         }
                     }
-                    if (!airfieldStages.ContainsKey(key)) {
-                        return false;
-                    }
                     var result = airfieldStages[key] + plane;
                     if (result == -1) {
-                        return false;
-                    }
+                        throw new AirfieldOverflowException();
                 }
             }
-            return true;
         }
     }
 }
