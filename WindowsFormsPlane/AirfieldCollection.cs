@@ -45,17 +45,14 @@ namespace WindowsFormsPlane
                 sw.Write($"AirfieldCollection{Environment.NewLine}");
                 foreach (var level in airfieldStages) {
                     sw.Write($"Airfield{separator}{level.Key}{Environment.NewLine}");
-                    ITransport plane = null;
-                    for (int i = 0; (plane = level.Value[i]) != null; i++) {
-                        if (plane != null) {
-                            if (plane.GetType().Name == "Plane") {
-                                sw.Write($"Plane{separator}");
-                            }
-                            if (plane.GetType().Name == "PlaneRadar") {
-                                sw.Write($"PlaneRadar{separator}");
-                            }
-                            sw.Write(plane + Environment.NewLine);
+                    foreach (ITransport plane in level.Value) {
+                        if (plane.GetType().Name == "Plane") {
+                            sw.Write($"Plane{separator}");
                         }
+                        if (plane.GetType().Name == "PlaneRadar") {
+                            sw.Write($"PlaneRadar{separator}");
+                        }
+                        sw.Write(plane + Environment.NewLine);
                     }
                 }
             }
@@ -94,6 +91,7 @@ namespace WindowsFormsPlane
                     var result = airfieldStages[key] + plane;
                     if (result == -1) {
                         throw new AirfieldOverflowException();
+                    }
                 }
             }
         }

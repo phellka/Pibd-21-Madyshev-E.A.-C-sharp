@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsPlane
 {
-    class Plane : Vehicle
+    class Plane : Vehicle, IEquatable<Plane>
     {
         protected int planeWidth = 170;
         protected int planeHeight = 80;
@@ -85,6 +85,36 @@ namespace WindowsFormsPlane
         }
         public override string ToString() {
             return $"{maxSpeed}{separator}{weight}{separator}{mainColor.Name}";
+        }
+
+        public bool Equals(Plane other) {
+            if (other == null) {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name) {
+                return false;
+            }
+            if (maxSpeed != other.maxSpeed) {
+                return false;
+            }
+            if (weight != other.weight) {
+                return false;
+            }
+            if (mainColor != other.mainColor) {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(object obj) {
+            if (obj == null) {
+                return false;
+            }
+            if (!(obj is Plane)) {
+                return false;
+            }
+            else {
+                return Equals((Plane)obj);
+            }
         }
     }
 }
