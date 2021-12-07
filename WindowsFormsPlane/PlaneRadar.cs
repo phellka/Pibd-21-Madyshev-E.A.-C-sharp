@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace WindowsFormsPlane
 {
-    class PlaneRadar :Plane
+    class PlaneRadar :Plane, IEquatable<PlaneRadar>
     {//перегрузить метод перемещения базового класса
         public Color dopColor { private set; get; }
         public bool hvRadar { private set; get; }
@@ -51,6 +51,44 @@ namespace WindowsFormsPlane
         }
         public override string ToString() {
             return $"{maxSpeed}{separator}{weight}{separator}{mainColor.Name}{separator}{dopColor.Name}{separator}{hvRadar}{separator}{hvEngine}";
+        }
+        public bool Equals(PlaneRadar other) {
+            if (other == null) {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name) {
+                return false;
+            }
+            if (maxSpeed != other.maxSpeed) {
+                return false;
+            }
+            if (weight != other.weight) {
+                return false;
+            }
+            if (mainColor != other.mainColor) {
+                return false;
+            }
+            if (dopColor != other.dopColor) {
+                return false;
+            }
+            if (hvEngine != other.hvEngine) {
+                return false;
+            }
+            if (hvRadar != other.hvRadar) {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(object obj) {
+            if (obj == null) {
+                return false;
+            }
+            if (!(obj is PlaneRadar)) {
+                return false;
+            }
+            else {
+                return Equals((PlaneRadar)obj);
+            }
         }
     }
 }

@@ -111,6 +111,10 @@ namespace WindowsFormsPlane
                     logger.Warn(ex);
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (AirfieldAlreadyHaveException ex) {
+                    logger.Warn(ex);
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (Exception ex) {
                     logger.Warn(ex);
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -153,6 +157,14 @@ namespace WindowsFormsPlane
                     logger.Warn(ex);
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e) {
+            if (listBoxAirfields.SelectedIndex > -1) {
+                airfieldCollection[listBoxAirfields.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка самолетов на аэродроме");
             }
         }
     }
